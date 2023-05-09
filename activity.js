@@ -1,4 +1,4 @@
-function Pokemon(name, level) {
+  function Pokemon(name, level) {
     this.name = name;
     this.level = level;
     this.health = level * 10;
