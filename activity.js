@@ -1,31 +1,10 @@
-let trainer = {
-    name: "Ash Ketchum",
-    age: 10,
-    pokemon: [],
-    friends: {
-      brock: ["Onix", "Geodude"],
-      misty: ["Staryu", "Starmie"]
-    },
-    talk() {
-      console.log("Pikachu! I choose you!");
-    }
-  };
-  
-  function Pokemon(name, level) {
+function Pokemon(name, level) {
     this.name = name;
     this.level = level;
-    this.health = level * 5;
-    this.attack = level * 2;
+    this.health = level * 10;
+    this.attack = level * 5;
   }
   
-  let pikachu = new Pokemon("Pikachu", 3);
-  let charmander = new Pokemon("Charmander", 5);
-  let squirtle = new Pokemon("Squirtle", 2);
-  
-  trainer.pokemon.push(pikachu);
-  trainer.pokemon.push(charmander);
-  trainer.pokemon.push(squirtle);
-
   Pokemon.prototype.tackle = function(targetPokemon) {
     targetPokemon.health -= this.attack;
     if (targetPokemon.health <= 0) {
@@ -34,10 +13,37 @@ let trainer = {
   };
   
   Pokemon.prototype.faint = function(targetPokemon) {
-    console.log(targetPokemon.name + " has fainted.");
+    console.log(`${targetPokemon.name} has fainted.`);
   };
   
-  pikachu.tackle(squirtle);
+  const pikachu = new Pokemon("Pikachu", 10);
+  const charizard = new Pokemon("Charizard", 20);
+  const squirtle = new Pokemon("Squirtle", 5);
+  const onix = new Pokemon("Onix", 15);
+  const staryu = new Pokemon("Staryu", 8);
   
-  console.log(trainer);
+  const trainer = {
+    name: "Ash",
+    age: 10,
+    pokemon: [pikachu, charizard, squirtle, onix, staryu],
+    friends: {
+      brock: ["Onix", "Geodude"],
+      misty: ["Staryu", "Starmie"]
+    },
+    talk: function() {
+      console.log("Pikachu! I choose you!");
+    }
+  };
   
+  console.log(trainer.name);
+  console.log(trainer["age"]);
+  console.log(trainer.pokemon);
+  console.log(trainer.friends);
+  trainer.talk();
+  
+  const pokemonList = [pikachu, charizard, squirtle, onix, staryu];
+  
+  pikachu.tackle(charizard);
+  console.log(charizard.health);
+
+  console.log(pokemonList);
